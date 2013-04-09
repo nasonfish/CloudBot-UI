@@ -29,7 +29,7 @@
 						<th>User</th>
 					</tr>
 					<?php
-					$db = new SQLite3("../../EsperNet.db");
+					$db = new SQLite3("../../".NETWORK.".db");
 					$result = $db->query('SELECT * FROM mem');
 					while($row = $result->fetchArray()):
 						foreach($row as $key => $val){
