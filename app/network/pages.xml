@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages>
+	<page>
+		<file>factoids</file>
+		<desc>Lists all of the factoids that have been created and the user that created them.</desc>
+		<title>Factoids</title>
+	</page>
+</pages>

@@ -9,7 +9,7 @@
 			foreach($config['bot']['networks'] as $network){
 				if(strcasecmp($URI_ARGS[1], $network) == 0){
 					define(NETWORK, $network);
-					if(isset($URI_ARGS[2])){
+					if(isset($URI_ARGS[2]) && !empty($URI_ARGS[2])){
 						if(file_exists('network/'.$URI_ARGS[2].'.php')){
 							include 'network/'.$URI_ARGS[2] . '.php';
 							if(DEBUG) print ("including network/" . $URI_ARGS[2] . '.php');

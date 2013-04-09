@@ -21,7 +21,7 @@
 		<link href="../css/bootstrap.css" rel="stylesheet">
 		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 		<link href="../css/cloudbot.css" rel="stylesheet">
-		<div class="span6 offset3 alert alert-info header-box container-narrow">
+		<div class="alert alert-info header-box container-narrow navbar-static-top">
 			<h2>Refract Web Interface</h2>
 			<p>This is the bot Refract's web interface with interacting with the bot outside of IRC.</p>
 			<p>Currently we only have a list of Factoids, but come back soon for more stuff!</p>

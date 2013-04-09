@@ -9,5 +9,6 @@
 	RewriteCond %{REQUEST_URI} !.*\.css$ [NC]
 	RewriteCond %{REQUEST_URI} !.*\.gif$ [NC]
 	RewriteCond %{REQUEST_URI} !.*\.js$ [NC]
+	RewriteCond %{REQUEST_URI} !.*\.xml$ [NC]
 	RewriteRule .* /app/index.php
 </IfModule>
