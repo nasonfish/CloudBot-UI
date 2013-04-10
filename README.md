@@ -1,25 +1,39 @@
+# Summary
+
 This is a web 'interface' made by nasonfish for showing factoids, and soon, other things
+
+# Installation
 
 To install, you need something like Apache.
 
-Place these files in the directory `/home/cloudbot/persist/(anyfoldername)/`
+Place these files in the directory `/home/cloudbot/persist/site/`, changing `/home/cloudbot/` to wherever your cloudbot is running from.
 
-You can change this to wherever your cloudbot is running, just where the bot.py is, and up into the persist and up one more.
+You can put these files there by moving them there over sftp or ftp or something of that sort, or you could use git if you have that available to you, using a command like `git clone git@github.com:nasonfish/CloudBot-UI.git`
 
-Set Apache to point to this
+I will use `/home/cloudbot/` in my examples, as that is where I run my bot from.
 
-For example,
+Set Apache to point to `/home/cloudbot/persist/site` in the `httpd.conf` (`/etc/httpd/conf/httpd.conf`)
+
+For example, I would add this to my `httpd.conf`.
 
     <VirtualHost *>
       ServerName refract.nasonfish.com
       DocumentRoot /home/cloudbot/persist/site/
     </VirtualHost>
 
-Is what I use.
 
-`http://refract.nasonfish.com/` points to this, which is in the directory `/persist/`.
-So far, it only works if the database name is `EsperNet.db`, I will need to add a config to make this work with other places.
+`http://refract.nasonfish.com/` will now point to this.
 
-This is just an early thing, more is coming, right now it's just kind of bad and in Alpha.
+# Configuration
+
+Okay, now you've got Apache pointing to the directory, but you still need to configure it for it to work.
+
+I have the default configuration file named config.default.php. You can fill this file out with the information it asks for, and then copy it to config.php.
+
+The program will not use the default config, only the one you renamed. When this interface is updated, the config might too, so you should keep the config.default.php so you can merge it.
+
+# End
+
+This is just an early thing, more is coming, right now it's just kind of bad and in Alpha. I hope you enjoy it a little.
 
 -nasonfish
