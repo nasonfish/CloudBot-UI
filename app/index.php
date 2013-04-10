@@ -1,6 +1,7 @@
 <?php
 	include '../config.php';
-	define("URI", $_SERVER["REQUEST_URI"]);
+	$URI = explode('?', $_SERVER["REQUEST_URI"]);
+	define("URI", $URI[0]);
 	define("DEBUG", $config['debug']);
 	$URI_ARGS = explode("/", URI);
 	if($URI_ARGS[1] != "api"){ // We don't want this stuff in the api.

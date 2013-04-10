@@ -7,4 +7,10 @@
 		<api>true</api>
 		<apifile>factoids</apifile>
 	</page>
+	<page>
+		<file>quotes</file>
+		<desc>A list of all the bot's quotes stored in the database</desc>
+		<title>Quotes</title>
+		<api>false</api>
+	</page>
 </pages>
