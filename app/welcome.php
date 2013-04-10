@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+	
 	<body>
 		<div class="row-fluid">
 			<div class="span8 offset2 alert alert-success">
@@ -8,6 +7,7 @@
 					print('<li><a href=/'.$network.'>Network '.$network.'</a></li>');
 				}
 				?>
+			
 			</div>
 		</div>
 	</body>

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+	
 	<body>
 		<div class="row-fluid">
 			<div class="span8 offset2 alert alert-success">
@@ -9,6 +8,7 @@
 		print '<li><a href="/'.NETWORK.'/'.$page->file.'/">'.$page->title.'</a> - '.$page->desc . ($page->api == "true" ? '<small>(<a href="/api/'.NETWORK.'/'.$page->apifile.'">api</a>)</small>' : '').'</li>';
 	}
 ?>
+			
 			</div>
 		</div>
 	</body>

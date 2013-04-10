@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-	<head>
 		<?php
 			error_reporting(E_ALL);
 			ini_set("error_reporting", 1); 
@@ -21,8 +20,9 @@
 		<link href="/css/bootstrap.css" rel="stylesheet">
 		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
 		<link href="/css/cloudbot.css" rel="stylesheet">
-		<div class="alert alert-info header-box container-narrow navbar-static-top">
-			<h2><?=$config['page']['header']?></h2>
-			<p><?=$config['page']['description']?></p>
+		<div class=" row-fluid">
+			<div class="alert alert-info header-box span10 offset1">
+				<h2><?=$config['page']['header']?></h2>
+				<p><?=$config['page']['description']?></p>
+			</div>
 		</div>
-</html>

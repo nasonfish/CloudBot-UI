@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <?php
 	function formatIfLink($key, $str){
 		if (substr($str, 0, 4) === "http"){
@@ -19,6 +17,7 @@
 		}
 	}
 ?>
+	
 	<body>
 		<div class="row-fluid">
 			<div class="span8 offset2 alert alert-success">
@@ -42,6 +41,7 @@
 						print "</tr>";
 					endwhile;
 					?>
+				
 				</table>
 			</div>
 		</div>
