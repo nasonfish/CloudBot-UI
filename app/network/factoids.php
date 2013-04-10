@@ -3,15 +3,13 @@
 		if (substr($str, 0, 4) === "http"){
 			return "<a href=" . $str . ">".$str."</a>";
 		} else if(substr($str, 0, 10) === "&lt;py&gt;") {
-//			if(isset($_REQUEST[$key])){
-//				$python = 'input="""'.$_REQUEST[$key].'""";nick="Username";chan="#Interface";bot_nick="Refract";'.substr($str, 11);
-//				print exec("python2.7 -c \\'$python\\'");
-//				print "exec('" . "python2.7 -c \\'$python\\'" . "');";
-//				print exec('python2.7 -c \'input="""nasonfish""";nick="Username";chan="#Interface";bot_nick="Refract";print("http://dhmc.us/players/view/" + input + "/");\'');
-//				return exec("python2.7 -c \\'$python\\'");
-//			} else {
-				return "Python: <code>" . substr($str, 11) . "</code>. <!--Enter Input: <form><input style=\"padding:5px\" type=\"text\" name=\"".$key."\"></form>-->";
-//			}
+			if(isset($_REQUEST[$key])){
+				$str = htmlspecialchars_decode($str);
+				$python = 'input="""'.$_REQUEST[$key].'""";nick="Username";chan="#Interface";bot_nick="Refract";'.substr($str, 4);
+				return "<strong>Result: </strong>" . exec("python -c '$python'"); // TODO python2.7 instead of python
+			} else {
+				return "Python: <code>" . substr($str, 11) . "</code>. Enter Input: <form><input style=\"padding:5px\" type=\"text\" name=\"".$key."\"></form>";
+			}
 		} else {
 			return $str;
 		}
