@@ -4,5 +4,7 @@
 		<file>factoids</file>
 		<desc>Lists all of the factoids that have been created and the user that created them.</desc>
 		<title>Factoids</title>
+		<api>true</api>
+		<apifile>factoids</apifile>
 	</page>
 </pages>

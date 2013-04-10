@@ -13,6 +13,14 @@
 $config = array();
 $config['bot'] = array();
 $config['theme'] = array();
+$config['page'] = array();
+
+/**
+ * Ignore this unless you want annoying
+ * messages saying which files are
+ * being used. This is for developer use
+ */
+$config['debug'] = false;
 
 /**
  * This is the bot's name. This won't make
