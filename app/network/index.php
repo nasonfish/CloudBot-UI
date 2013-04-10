@@ -4,12 +4,9 @@
 		<div class="row-fluid">
 			<div class="span8 offset2 alert alert-success">
 <?php
-	$pages = simplexml_load_file("pages.xml");
-	var_dump($pages);
-	var_dump($pages->page);
-	var_dump($pages->pages);
-	foreach($pages->pages->page as $page){
-		print '<a href="/'.NETWORK.'/'.$page->file.'/">'.$page->title.'</a> - '.$page->desc;
+	$pages = simplexml_load_file("network/pages.xml");
+	foreach($pages->page as $page){
+		print '<li><a href="/'.NETWORK.'/'.$page->file.'/">'.$page->title.'</a> - '.$page->desc . '</li>';
 	}
 ?>
 			</div>

@@ -18,9 +18,9 @@
 					Direction::Bottom_Right); ?>
 			p{}
 		</style>
-		<link href="../css/bootstrap.css" rel="stylesheet">
-		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
-		<link href="../css/cloudbot.css" rel="stylesheet">
+		<link href="/css/bootstrap.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="/css/cloudbot.css" rel="stylesheet">
 		<div class="alert alert-info header-box container-narrow navbar-static-top">
 			<h2>Refract Web Interface</h2>
 			<p>This is the bot Refract's web interface with interacting with the bot outside of IRC.</p>
