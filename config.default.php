@@ -43,7 +43,20 @@ $config['bot']['networks'] = array("EsperNet");
 /**
  * Page title to be used.
  */
-$config['pagetitle'] = "CloudBot Web Interface";
+$config['page']['title'] = "CloudBot Web Interface";
+
+/**
+ * This will appear at the top of every page.
+ * You can use HTML in this.
+ */
+$config['page']['header'] = "Welcome to the unofficial CloudBot web interface!";
+
+/**
+ * This will appear below the header at the 
+ * top of every page. You can use HTML
+ * in this.
+ */
+$config['page']['description'] = "This web interface will allow you to view CloudBot factoids, and soon, much more!";
 
 /**
  * Theme it. It is gradient, so it will go
