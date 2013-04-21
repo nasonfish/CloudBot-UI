@@ -1,14 +1,26 @@
 	
 	<body>
-		<?php $db = new SQLite3("../../".NETWORK.".db");
+		<?php
+			function parseArray($array){
+				$list = "[";
+				while($val = $array->fetchArray()){
+					$list .= $val['nick'] . ",";
+				}
+				$list = substr($list, 0, strlen($list) - 1); // Remove the last ",".
+				$list .= "]";
+				return $list;
+			}
+		$db = new SQLite3("../../".NETWORK.".db");
 		$users = $db->query('SELECT DISTINCT nick FROM quote LIMIT 8');
+		$allUsers = $db->query('SELECT DISTINCT nick FROM quote LIMIT 100');
 		?>
 		<div class="row-fluid">
 			<div class="span8 offset2 alert alert-success">
 				<h4>Filter a user? </h4> 
 				<form>
-					<input style="padding:5px" type="text" name="whereuser">
+					<input style="padding:5px" autocomplete="off" type="text" data-provide="typeahead" data-souce="<?= parseArray($allUsers) ?>" name="whereuser">
 					<?php 
+					$i = 0;
 					while($row = $users->fetchArray()):
 						print '<a href="?whereuser='.$row['nick'].'"><input type="button" name="whereuser" value="'.$row['nick'].'"></input></a>';
 					endwhile;
@@ -33,7 +45,7 @@
 							print "<td>" . $row['chan'] . "</td>";
 							print "<td>" . $row['nick'] . "</td>";
 							print "<td>" . $row['add_nick'] . "</td>";
-							print "<td>" . $row['msg'] . "</td>";
+							print "<td>" . htmlspecialchars("<") . $row['nick'] . htmlspecialchars("> ") . $row['msg'] . "</td>";
 						print "</tr>";
 					endwhile;
 					?>

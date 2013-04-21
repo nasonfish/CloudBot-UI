@@ -26,3 +26,4 @@
 				<p><?=$config['page']['description']?></p>
 			</div>
 		</div>
+		<script src="js/bootstrap.min.js"></script>

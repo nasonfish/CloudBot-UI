@@ -11,6 +11,7 @@
 		<file>quotes</file>
 		<desc>A list of all the bot's quotes stored in the database</desc>
 		<title>Quotes</title>
-		<api>false</api>
+		<api>true</api>
+		<apifile>quotes</apifile>
 	</page>
 </pages>
