@@ -3,6 +3,9 @@
 	$URI = explode('?', $_SERVER["REQUEST_URI"]);
 	define("URI", $URI[0]);
 	define("DEBUG", $config['debug']);
+	define("BASE_DIRECTORY", dirname(__FILE__));
+	define("DS", DIRECTORY_SEPARATOR);
+	define("PERSIST_DIR", dirname(__FILE__) . DS . '..' . DS . '..' . DS);
 	$URI_ARGS = explode("/", URI);
 	if($URI_ARGS[1] != "api"){ // We don't want this stuff in the api.
 		include 'default.tpl.php';

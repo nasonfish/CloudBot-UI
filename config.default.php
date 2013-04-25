@@ -14,6 +14,9 @@ $config = array();
 $config['bot'] = array();
 $config['theme'] = array();
 $config['page'] = array();
+$config['pages'] = array();
+
+$config['pages']['stats'] = array();
 
 /**
  * Ignore this unless you want annoying
@@ -68,4 +71,11 @@ $config['page']['description'] = "This web interface will allow you to view Clou
 $config['theme']['background1'] = "#33CC33";
 $config['theme']['background2'] = "#D6F5D6";
 $config['theme']['background3'] = "#33CC33";
+
+/**
+ * What channels are allowed to be shown in the
+ * stats. "*" means "All Channels", however,
+ * other wildcards are not supported <b>yet</b>.
+ */
+$config['pages']['stats']['channels'] = array("*");
 ?>

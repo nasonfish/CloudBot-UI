@@ -9,9 +9,15 @@
 	</page>
 	<page>
 		<file>quotes</file>
-		<desc>A list of all the bot's quotes stored in the database</desc>
+		<desc>A list of all the bot's quotes stored in the database.</desc>
 		<title>Quotes</title>
 		<api>true</api>
 		<apifile>quotes</apifile>
+	</page>
+	<page>
+		<file>stats</file>
+		<desc>Stats for channels' chats.</desc>
+		<title>Stats</title>
+		<api>false</api>
 	</page>
 </pages>
