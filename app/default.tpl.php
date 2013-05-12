@@ -15,7 +15,6 @@
 					$config['theme']['background2'], 
 					$config['theme']['background3'], 
 					Direction::Bottom_Right); ?>
-			p{}
 		</style>
 		<link href="/css/bootstrap.css" rel="stylesheet">
 		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
@@ -24,6 +23,9 @@
 			<div class="alert alert-info header-box span10 offset1">
 				<h2><?=$config['page']['header']?></h2>
 				<p><?=$config['page']['description']?></p>
-			</div>
+                <?php if((isset($URI_ARGS[1]) && !empty($URI_ARGS[1]))): ?>
+                    <span id='back' style='text-align: left'><a href='<?=empty($_GET) ? '../' : './'?>'><i class="icon-arrow-left"></i> Go Back.</a></span>
+                <?php endif; ?>
+  			</div>
 		</div>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>

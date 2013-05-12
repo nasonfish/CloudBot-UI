@@ -13,7 +13,7 @@ class Stats {
 	 * table we use for these stats.
 	 * @var String table name
 	 */
-	private $table = "seen_user";
+	private $table = "logs";
 	
 	/**
 	 * Holds a connection to the
@@ -29,21 +29,18 @@ class Stats {
 	 * @param String $channel
 	 */
 	public function __construct($channel){
-		print "hi";
-		$this->channel = $channel;
-		print "hi";
-		print(PERSIST_DIR . NETWORK . ".db" . file_exists(PERSIST_DIR . NETWORK . ".db"));
+		$this->channel = '#' . $channel;
 		$this->db = new SQLite3(PERSIST_DIR . NETWORK . ".db");
 	}
-	
-	/**
-	 * Execute a query and return an
-	 * array of results.
-	 * @param string $query the query to run
-	 * @return $return an array of results
-	 */
+
+    /**
+     * Execute a query and return an
+     * array of results.
+     * @param string $query the query to run
+     * @return array $return an array of results
+     */
 	private function query($query){
-		$query = sprintf($query, $this->table, $this->channel);
+		$query = sprintf($query, "`".$this->table."`", "'".$this->channel."'");
 		$result = $this->db->query($query);
 		$return = array();
 		$i = 0;
@@ -55,6 +52,11 @@ class Stats {
 		}
 		return $return;
 	}
+
+    public function chan_exists(){
+        $result = $this->db->query("SELECT EXISTS(SELECT chan FROM ".$this->table." WHERE chan='".$this->channel."' LIMIT 1)")->fetchArray();
+        return $result[0];
+    }
 	
 	/**
 	 * Get Every singe message sent in that 
@@ -62,7 +64,7 @@ class Stats {
 	 * @return array of results
 	 */
 	public function getAllMessages(){
-		return $this->query("SELECT * FROM %s WHERE chan='%s'");
+		return $this->query("SELECT * FROM %s WHERE chan=%s");
 	}
 	
 	/**
@@ -70,7 +72,7 @@ class Stats {
 	 * @return array() of messagers
 	 */
 	public function getTopTenMessagers(){
-		return $this->getTopMessangers(10);
+		return $this->getTopMessagers(10);
 	}
 	
 	/**
@@ -80,7 +82,7 @@ class Stats {
 	 */
 	public function getTopMessagers($amt){
 		$names = array();
-		foreach($this->query("SELECT DISTINCT name FROM `%s` WHERE chan='%s' GROUP BY name ORDER BY SUM(1) LIMIT $amt") as $name){
+		foreach($this->query("SELECT DISTINCT name FROM %s WHERE chan=%s GROUP BY name ORDER BY SUM(1) DESC --LIMIT $amt") as $name){
 			$names[] = $name['name'];
 		}
 		return $names;
@@ -92,7 +94,9 @@ class Stats {
 	 * @return String quote
 	 */
 	public function getRandomQuote($user){
-		return $this->query("SELECT quote FROM `%s` WHERE chan='%s' AND name='$user' ORDER BY RANDOM() LIMIT 1")[0]['quote'];
+		$rand = $this->query("SELECT quote FROM %s WHERE chan=%s AND name='$user' ORDER BY RANDOM() LIMIT 1");
+		$rand = $rand[0]['quote'];
+		return $rand;
 	}
 	
 	/**
@@ -101,7 +105,9 @@ class Stats {
 	 * @return String the most recent host of the user
 	 */
 	public function getHost($user){
-		return $this->query("SELECT host FROM `%s` WHERE chan='%s' AND name='$user' ORDER BY time DESC LIMIT 1")[0]['host'];
+		$host = $this->query("SELECT REPLACE(host, '@', ' @') FROM %s WHERE chan=%s AND name='$user' ORDER BY time DESC LIMIT 1");
+		$host = $host[0]['host'];
+		return $host;
 	}
 	
 	/**
@@ -113,12 +119,14 @@ class Stats {
 	 *       words per line, chars per line)
 	 */
 	public function getTextStats($user){
-		return $this->query("SELECT SUM(1) as total, 
+		$stats = $this->query("SELECT SUM(1) as total, 
 			SUM(length(quote)-length(replace(quote,' ','')) + 1) as words, 
 			SUM(length(quote)-length(replace(quote,' ','')) + 1) / SUM(1) as wpl, 
 			SUM(length(quote)) as chars,
 			SUM(length(quote)) / SUM(1) as cpl
-			FROM `%s` WHERE chan='%s' AND name='$user' GROUP BY name")[0];
+			FROM %s WHERE chan=%s AND name='$user' GROUP BY name");
+		$stats = $stats[0];
+		return $stats;
 	}
 }
 
