@@ -57,7 +57,6 @@
 	                        color-stop(0.50, $color2),
 	                        color-stop(0.75, $color3)
                             );
-						background-attachment:fixed
 "//."						background-repeat:no-repeat;
 ."}";
             

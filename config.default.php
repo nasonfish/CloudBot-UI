@@ -4,7 +4,7 @@
  * This is the config where you can define
  * things specific to your bot, so we don't
  * have to assume anything.
- * @package nasonfish.CBWeb
+ * @package nasonfish.CloudBot-UI
  */
 /**
  * First we're going to do some internal
@@ -64,7 +64,7 @@ $config['page']['description'] = "This web interface will allow you to view Clou
 /**
  * Theme it. It is gradient, so it will go
  * from top with background1, to middle with
- * background2, to bottem with background3, and
+ * background2, to bottom with background3, and
  * repeat. I suggest you make
  * background1 and background3 the same.
  */
