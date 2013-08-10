@@ -8,7 +8,7 @@
 				$python = 'input="""'.$_REQUEST[$key].'""";nick="Username";chan="#Interface";bot_nick="Refract";'.substr($str, 4);
 				return "<strong>Result: </strong>" . exec("python -c '$python'"); // TODO python2.7 instead of python
 			} else {
-				return "Python: <code>" . substr($str, 11) . "</code>. <br> Enter Input: <form><input style=\"padding:5px\" type=\"text\" name=\"".$key."\"></form>";
+				return "Python: <code>" . substr($str, 10) . "</code>. <br> Enter Input: <form><input style=\"padding:5px\" type=\"text\" name=\"".$key."\"></form>";
 			}
 		} else {
 			return $str;
