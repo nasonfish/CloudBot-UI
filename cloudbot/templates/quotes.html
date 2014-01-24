@@ -1,7 +1,14 @@
 {% extends "base.html" %}
-
+{% block style %}
+.quotes th, .quotes td{
+    border: 1px solid black;
+}
+.quotes{
+    text-align: center;
+}
+{% endblock %}
 {% block content %}
-<table>
+<table class="quotes">
     <tr>
         <th>Channel</th>
         <th>Nick</th>
@@ -15,7 +22,7 @@
         <td>{{ quote.nick }}</td>
         <td>{{ quote.add_nick }}</td>
         <td>&lt;{{ quote.nick }}&gt; {{ quote.msg }}</td>
-        <td>{{ quote.time }}</td>
+        <td>{{ quote.get_time() }}</td>
     </tr>
     {% endfor %}
 </table>

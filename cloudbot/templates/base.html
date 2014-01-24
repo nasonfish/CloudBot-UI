@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
     <style>
     .header{
         background-image: url('/static/img/squared_metal.png');
@@ -8,10 +10,25 @@
     body{
         background-image: url('/static/img/light_grey.png');
     }
+    .title{
+        color: black;
+        text-decoration: none;
+        padding-left: 10px;
+    }
+    h1, h2, h3, h4, h5, h6{
+        font-family: 'Hammersmith One', sans-serif;
+    }
+    body{
+        font-family: 'Actor', sans-serif;
+    }
     .subhead{
         margin-left: 20px;
         font-size: 12px;
     }
+    .content{
+        margin: 25px;
+    }
+    {% block style %}{% endblock style %}
     </style>
 </head>
 <body>
@@ -19,7 +36,7 @@
         <table>
             <tr>
                 <td>
-                    <h2>CloudBot-UI</h2>
+                    <h2><a href="/" class="title">CloudBot-UI</a></h2>
                 </td>
                 <td>
                     <p class="subhead">A simple web app for accessing CloudBot's database.</p>
@@ -32,6 +49,8 @@
             </tr>-->
         </table>
     </div>
-    {% block content %}{% endblock content %}
+    <div class="content">
+        {% block content %}{% endblock content %}
+    </div>
 </body>
 </html>

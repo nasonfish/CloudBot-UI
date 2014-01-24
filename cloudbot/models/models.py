@@ -1,4 +1,5 @@
 from cloudbot import db
+import datetime
 
 class LastFM(db.Model):
     __tablename__ = 'lastfm'
@@ -25,6 +26,9 @@ class Quotes(db.Model):
     msg = db.Column(db.Text(), primary_key=True)
     time = db.Column(db.Float())
     deleted = db.Column(db.Boolean(), default=0)
+
+    def get_time(self):
+        return datetime.datetime.fromtimestamp(self.time).strftime("%a, %b %d, %Y (%I:%M %p)")
 
     def _serialize(self):
         return dict(chan=self.chan, nick=self.nick, add_nick=self.add_nick,

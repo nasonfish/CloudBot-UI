@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block style %}
+.factoids th, .factoids td{
+    border: 1px solid black;
+}
+.factoids{
+    text-align: center;
+}
+{% endblock %}
+{% block content %}
+<table class="factoids">
+    <tr>
+        <th>Nick</th>
+        <th>Word</th>
+        <th>Data</th>
+    </tr>
+    {% for factoid in factoids %}
+    <tr>
+        <td>{{ factoid.nick }}</td>
+        <td>{{ factoid.word }}</td>
+        <td>{{ factoid.data }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
