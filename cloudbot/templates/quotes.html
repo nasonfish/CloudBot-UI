@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Channel</th>
+        <th>Nick</th>
+        <th>Add Nick</th>
+        <th>Message</th>
+        <th>Time</th>
+    </tr>
+    {% for quote in quotes %}
+    <tr>
+        <td>{{ quote.chan }}</td>
+        <td>{{ quote.nick }}</td>
+        <td>{{ quote.add_nick }}</td>
+        <td>&lt;{{ quote.nick }}&gt; {{ quote.msg }}</td>
+        <td>{{ quote.time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
