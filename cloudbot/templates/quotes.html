@@ -8,6 +8,14 @@
 }
 {% endblock %}
 {% block content %}
+<form action="/quote/submit" method="post">
+    <h2>Submit Quote</h2>
+    <label for="add_nick">What's your nick?</label>
+    <input id="add_nick" name="add_nick" type="text"/>
+    <label for="message">What is the quote?</label>
+    <input id="message" name="message" type="text"/>
+    <button type="submit">Submit quote!</button>
+</form>
 <table class="quotes">
     <tr>
         <th>Channel</th>

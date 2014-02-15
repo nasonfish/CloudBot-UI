@@ -1,5 +1,6 @@
 from cloudbot import db
 import datetime
+import time as now
 
 class LastFM(db.Model):
     __tablename__ = 'lastfm'
@@ -12,11 +13,32 @@ class Memory(db.Model):
     data = db.Column(db.Text())
     nick = db.Column(db.String(32))
 
+    def __init__(self, word, data):
+        self.word = word
+        self.data = data
+        self.nick = "pansfos"
+
+        db.session.add(self)
+        db.session.commit()
+
     def is_python(self):
         return self.data.startswith("<py>")
 
+    def evaluate(self, input=""):  # todo onkeydown for submitting, startswith <py>: 'Hint: the variables are ...'
+        return eval(("input='''%s''';nick='your_nick';bot_nick='CloudBot';chan='web_interface'" % input)
+                    + self.data.replace("<py>", ""))  # substr?
+
+    def _serialize(self):
+        return dict(word=self.word, data=self.data, nick=self.nick)
+
     def is_url(self):
         return self.data.startswith("<url>")
+
+
+class Test(db.Model):
+    __tablename__ = "a"
+    i = db.Column(db.String(32), primary_key=True)
+    b = db.Column(db.Boolean(), default=1)
 
 class Quotes(db.Model):
     __tablename__ = 'quote'
@@ -26,6 +48,17 @@ class Quotes(db.Model):
     msg = db.Column(db.Text(), primary_key=True)
     time = db.Column(db.Float())
     deleted = db.Column(db.Boolean(), default=0)
+
+    def __init__(self, chan, nick, add_nick, msg, time=now.time(), deleted=0):
+        self.chan = chan
+        self.nick = nick
+        self.add_nick = add_nick
+        self.msg = msg
+        self.time = time
+        self.deleted = deleted
+
+        db.session.add(self)
+        db.session.commit()
 
     def get_time(self):
         return datetime.datetime.fromtimestamp(self.time).strftime("%a, %b %d, %Y (%I:%M %p)")

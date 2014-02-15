@@ -8,6 +8,15 @@
 }
 {% endblock %}
 {% block content %}
+
+        <form method="POST" action="/factoid/add">
+            <label for="word">Type your word</label>
+            <input id="word" name="word" type="text"/>
+            <label for="data">wat data</label>
+            <input id="data" name="data" type="text"/>
+            <button type="submit">Soobmat</button>
+        </form>
+
 <table class="factoids">
     <tr>
         <th>Nick</th>
@@ -18,8 +27,23 @@
     <tr>
         <td>{{ factoid.nick }}</td>
         <td>{{ factoid.word }}</td>
-        <td>{{ factoid.data }}</td>
+        {% if factoid.is_python() %}
+        <td id="{{factoid.word}}">
+          <code>{{ factoid.data }}</code>
+          <form>
+          <input type="text"/>
+          <button onclick="event.preventDefault();ajax_eval('{{ factoid.word }}', '{{ factoid.data }}');">Submit</button>
+          </form>
+        </td>
+        {% else %}
+          <td>{{ factoid.data }}</td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table>
+{% endblock %}
+{% block js %}
+        var ajax_eval = function(word, data){
+
+        };
 {% endblock %}
