@@ -13,10 +13,10 @@ class Memory(db.Model):
     data = db.Column(db.Text())
     nick = db.Column(db.String(32))
 
-    def __init__(self, word, data):
+    def __init__(self, word, data, nick="guest"):
         self.word = word
         self.data = data
-        self.nick = "pansfos"
+        self.nick = nick
 
         db.session.add(self)
         db.session.commit()
@@ -26,7 +26,7 @@ class Memory(db.Model):
 
     def evaluate(self, input=""):  # todo onkeydown for submitting, startswith <py>: 'Hint: the variables are ...'
         return eval(("input='''%s''';nick='your_nick';bot_nick='CloudBot';chan='web_interface'" % input)
-                    + self.data.replace("<py>", ""))  # substr?
+                    + self.data.replace("<py>", ""))  # substr? and, eval probably isn't a good idea with this.
 
     def _serialize(self):
         return dict(word=self.word, data=self.data, nick=self.nick)
@@ -34,11 +34,6 @@ class Memory(db.Model):
     def is_url(self):
         return self.data.startswith("<url>")
 
-
-class Test(db.Model):
-    __tablename__ = "a"
-    i = db.Column(db.String(32), primary_key=True)
-    b = db.Column(db.Boolean(), default=1)
 
 class Quotes(db.Model):
     __tablename__ = 'quote'
@@ -88,4 +83,4 @@ class Seen(db.Model):
     host = db.Column(db.String(128))
 
 
-# no tell table
+# no tell table, that's private for the user
